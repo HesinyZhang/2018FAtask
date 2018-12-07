@@ -1,10 +1,10 @@
-#数据集
+# 数据集
 help(cars)
 cars
 
 plot(cars$dist~cars$speed) #散点图
 
-#plot()函数
+# plot()函数
 plot(cars$dist~cars$speed), # y~x
 main="Relationship between car distance & speed", # 画标题
 xlab="Speed (miles per hour)", #X坐标轴标题
@@ -22,7 +22,7 @@ col.lab="red",
 col.main="darkblue"
 
 
-#导入数据集
+# 导入数据集
 getwd()
 setwd("E:/… ")
 sales<-read.csv("dailysales.csv", header=TRUE) 
@@ -30,7 +30,7 @@ sales<-read.csv("dailysales.csv", header=TRUE)
 
 
 plot(sales$units~as.Date(sales$date,"%d/%m/%y"))
-改变参数：type="l"  #注意是l不是| 画线图
+# 改变参数：type="l"  #注意是l不是| 画线图
 main="Unit Sales in the month of January 2010"
 xlab="Date",
 ylab="Number of units sold",col="blue")
@@ -51,7 +51,7 @@ plot(density(rnorm(1000))) #密度图
 
 metals<-read.csv("metals.csv",header=TRUE)
 boxplot(metals, xlab="Metals", ylab="Atmospheric Concentration in ng per cubic metre", main="Atmospheric Metal Concentrations in London")  #箱型图 
-参数：outline=FALSE #排除离群值；horizonal=TRUE #水平放置；range=0 #延长虚线
+#参数：outline=FALSE #排除离群值；horizonal=TRUE #水平放置；range=0 #延长虚线
 
 
 iris #鸢尾花数据集
@@ -62,7 +62,7 @@ plot(Sepal.Length,Sepal.Width) #两个连续变量
 plot(Species) #分类变量
 plot(Species,Sepal.Length) #分类变量与连续变量
 plot(iris) #散点图阵
-改变参数：
+# 改变参数：
 main="Relationships between characteristics of iris flowers",
 pch=19,
 col="blue"
@@ -100,7 +100,6 @@ plot(market$profits~as.Date(market$date,"%d/%m/%y"), type="l", main="Profits", x
 plot(market$customers~as.Date(market$date,"%d/%m/%y"), type="l", main="Customer visits", xlab="Date", ylab="Number of people", col="black")
 
 
-
 rain<-read.csv("cityrain.csv",header=TRUE)
 
 plot(rain$Tokyo,type="l",col="red",ylim=c(0,300),main="Monthly Rainfall in major cities",xlab="Month of Year",ylab="Rainfall (mm)",lwd=2)
@@ -111,13 +110,13 @@ lines(rain$Berlin,type="l",col="orange",lwd=2)
 legend("topright",legend=c("Tokyo","NewYork","London","Berlin"),col=c("red","blue","green","orange"),lty=1,lwd=2) #增加图例
 legend("top",legend=c("Tokyo","NewYork","London","Berlin"),ncol=4,cex=0.8,bty="n",col=c("red","blue","green","orange"),lty=1,lwd=2) #另一种增加图例（颜色数和样本数要相等）
 
-#再扩展一个填充颜色的
+# 再扩展一个填充颜色的
 install.packages("maps")
 library("maps")
 map()
 map('world', fill = TRUE,col=heat.colors(10))
 
-扩展：一步步教你用R画“社交数据可视化：Facebook好友联系图”（https://flowingdata.com/2011/05/11/how-to-map-connections-with-great-circles/）
+# 扩展：一步步教你用R画“社交数据可视化：Facebook好友联系图”（https://flowingdata.com/2011/05/11/how-to-map-connections-with-great-circles/）
 
 
 
@@ -155,7 +154,7 @@ abline(lmfit)
 plot(cars, main = "lowess(cars)")
 lines(lowess(cars), col = "blue")
 lines(lowess(cars, f=0.3), col = "orange") #f是lowess算法的一个参数。
-（扩展：一个关于量化投资的现实应用例子http://blog.sina.com.cn/s/blog_7dd658650100tpm2.html）
+# （扩展：一个关于量化投资的现实应用例子http://blog.sina.com.cn/s/blog_7dd658650100tpm2.html）
 
 
 # QQ图 (研究正态分布的)
@@ -196,7 +195,7 @@ install.packages("scatterplot3d")
 library(scatterplot3d)
 scatterplot3d(x=mtcars$wt,y=mtcars$disp,z=mtcars$mpg)
 scatterplot3d(mtcars$wt,mtcars$disp,mtcars$mpg,pch=16, highlight.3d=TRUE,angle=20,xlab="Weight",ylab="Displacement",zlab="Fuel Economy (mpg)",type="h",main="Relationships between car specifications")
-（再扩展：高维数据展现专业扩展包rggobi——install.packages("rggobi")
+# （再扩展：高维数据展现专业扩展包rggobi——install.packages("rggobi")
 http://www.ggobi.org/rggobi/ 动画demo http://www.ggobi.org/demos/）
 
 
@@ -215,7 +214,6 @@ legend("bottomright",legend=pielabels,bty="n",fill=brewer.pal(7,"Set1")) # 增�
 
 
 
-
 # 输出为图形（或其他）文件：
 png("scatterplot.png")
 plot(rnorm(1000))
@@ -223,5 +221,4 @@ dev.off()
 
 
 
-
-分享：R语言自学视频https://www.bilibili.com/video/av28145975?t=145&p=7
+# 分享：R语言自学视频https://www.bilibili.com/video/av28145975?t=145&p=7
