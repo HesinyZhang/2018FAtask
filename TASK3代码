@@ -1,0 +1,18 @@
+# install.packages("downloader")
+# install.packages("rvest")
+library(rvest)
+library(downloader)
+
+catch_zhihu_picture <- function(url,len=length(link)){
+  link<- read_html(url)%>% html_nodes("div.RichContent-inner>span")%>%
+  html_nodes("img")%>%html_attr("data-original")%>%na.omit
+  link<- link[seq(1,length(link),by=2)] #剔除多余链接
+  name<-sub("https://pic\\d.zhimg.com/","",link) 
+  setwd("D:/test")
+  for(i in 1:len){
+    download(link[i],name[i],mode="wb")
+    }
+  }
+
+catch_zhihu_picture("https://www.zhihu.com/question/36059311",4)
+catch_zhihu_picture("https://www.zhihu.com/question/36059311")
