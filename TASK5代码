@@ -1,0 +1,84 @@
+---
+title: "TASK5 16307110398"
+author: "zsy"
+date: "2018年12月15日"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 统计模型：帕累托分布及帕累托图
+# 代码参考：https://blog.csdn.net/kmd8d5r/article/details/79366648
+
+
+```{r}
+#不用包
+par(mar=c(5,5,4,5)+0.1)
+absolute<-c(15,18,23,28,16,10,6,12)
+bar<-barplot(absolute,ylab="总数",col="skyblue",col.axis="skyblue",col.lab="skyblue")
+mtext(LETTERS[1:8],side=1,at=bar,col="black")
+par(new=T)
+cum_per <- c(0.05,0.2,0.45,0.6,0.8,0.85,0.9,1.0)
+plot(bar,cum_per,axes=F,xlab="",ylab="",col="red",type="b")
+axis(4,col="red",col.ticks="red",col.axis="red")
+mtext("累计百分比%",side=4,line=3,col="red")
+title(main="帕累托图")
+```
+
+```{r}
+#plotrix包
+library(plotrix)
+type <- 1:8
+absolute <-  c(15,18,23,28,18,9,7,13)
+cum_per <-  cumsum(absolute)/sum(absolute)
+twoord.plot(lx=type,ly=absolute,rx=type,ry=cum_per,type=c("bar","l"),lcol = "skyblue",rcol="red",ylab="总数",rylab="累计百分比%",main="帕累托图",xtickpos=type,xticklab=LETTERS[1:8])
+```
+
+```{r}
+#TeachingDemos包
+par(mar=c(5,5,4,5)+0.1)
+library(TeachingDemos)
+bar <- barplot(absolute,ylab="总数",col="skyblue",col.axis="skyblue",col.lab="skyblue")
+updateusr(1:2,range(min(absolute),max(absolute)),1:2,range(min(cum_per),max(cum_per)))
+lines(bar,cum_per,type="b",col="red")
+axis(4,col="red",col.ticks="red",col.axis="red")
+mtext("累计百分比%",side=4,line=3,col="red")
+mtext(LETTERS[1:8],side=1,line=1,at=bar,col="black")
+title(main = '帕累托图')
+```
+
+```{r}
+#qcc包
+library(qcc)
+# absolute <- c(15,18,23,28,18,9,7,13)
+names(absolute)<-LETTERS[1:8]
+pareto.chart(absolute,ylab="总数",ylab2="累计百分比%",main="帕累托图")
+
+```
+
+```{r}
+#qualityTools包
+library(qualityTools)
+absolute <- c(15,18,23,28,18,9,7,13)
+names(absolute) <- LETTERS[1:8]
+cum_per <- cumsum(absolute)/sum(absolute)
+paretoChart(absolute,cum_per,main="帕累托图",ylab="总数")
+```
+
+```{r}
+#qicharts包
+library(qicharts)
+x <- rep(LETTERS[1:9], c(256, 128, 64, 32, 16, 8, 4, 2, 1))
+paretochart(x)
+```
+
+```{r}
+#fdth包
+library(fdth)
+x <- rep(LETTERS[1:9], c(256, 128, 64, 32, 16, 8, 4, 2, 1))
+dc <- fdt_cat(x)
+plot(dc,type="pa",col=c("skyblue","red"))
+```
+
